@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
+import { Link } from 'react-router-dom';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsers } from './actions/usersActions';
+
 
 const Users = () => {
     const {users, fetching, error } = useSelector(state => state.users);
@@ -17,15 +21,13 @@ const Users = () => {
         content = <p>Loading users...</p>
     }else{
         content = <ul>{users.map((user) => (
-            <li key={user.id}>{user.name}</li>
+            <li key={user.id}>{user.name} {'-->>'} <Link to={`/my-posts/${user.id}`}>posts</Link></li>
         ))}</ul>
     }
 
 
     return( 
-        <div>
-            {content}
-        </div>
+        <div>{content}</div>
     )
 }
 
