@@ -1,17 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './App.css';
 
-//connecting the store with the app
-import store from './store';
-import { Provider } from 'react-redux';
+import Users from './components/Users';
 
 function App() {
   return (
-    <Provider store={store}>
-      <div>
-        Hellooooou.
-      </div>
-    </Provider>
+    <Fragment>
+      <Users/>
+    </Fragment>
   );
 }
 
