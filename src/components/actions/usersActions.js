@@ -12,7 +12,7 @@ export const fetchUsers = () => {
             dispatch({ type: 'FETCH_USERS_FULFILLED', payload: response.data})
         })
         .catch((err) => {
-            dispatch({ type: 'FETCH_USERS_REJECTED', payload: err})
+            dispatch({ type: 'FETCH_USERS_REJECTED', payload: err.message})
         })
     }
 }
