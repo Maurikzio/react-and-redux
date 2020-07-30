@@ -21,7 +21,7 @@ const Users = () => {
         content = <p>Loading users...</p>
     }else{
         content = <ul>{users.map((user) => (
-            <li key={user.id}>{user.name} {'-->>'} <Link to={`/my-posts/${user.id}`}>posts</Link></li>
+            <li key={user.id}>{user.name} {'-->>'} <Link to={`/${user.id}`}>posts</Link></li>
         ))}</ul>
     }
 
