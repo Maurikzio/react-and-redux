@@ -1,5 +1,5 @@
 const initialState = {
-    posts: [],
+    comments: [],
     fetching: false, 
     fetched: false, 
     error: null
@@ -7,21 +7,21 @@ const initialState = {
 
 export default function reducer( state=initialState, action){
     switch(action.type){
-        case 'FETCH_POSTS': {
+        case 'FETCH_COMMENTS': {
             return {
                 ...state,
                 fetching: true
             }
         }
-        case 'FETCH_POSTS_FULFILLED': {
+        case 'FETCH_COMMENTS_FULFILLED': {
             return {
                 ...state,
                 fetching: false,
                 fetched: true,
-                posts: action.payload,
+                comments: action.payload,
             }
         }
-        case 'FETCH_POSTS_REJECTED': {
+        case 'FETCH_COMMENTS_REJECTED': {
             return {
                 ...state,
                 fetching: false,
@@ -29,6 +29,6 @@ export default function reducer( state=initialState, action){
             }
         }
         default:
-            return state
+            return state;
     }
 }

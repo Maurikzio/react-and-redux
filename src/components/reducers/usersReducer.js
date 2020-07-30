@@ -25,6 +25,7 @@ export default function reducer(state=initialState, action){
                 error: action.payload
             }
         }
+        default:
+            return state;
     }
-    return state;
 }

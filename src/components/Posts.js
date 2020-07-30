@@ -15,7 +15,7 @@ const Posts = () => {
 
     useEffect(() => {
         dispatch(fetchPosts(id))
-    }, [])
+    }, [id])
 
     let content;
 
