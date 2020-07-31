@@ -50,6 +50,19 @@ export default function reducer( state=initialState, action){
                 error: action.payload
             }
         }
+        case 'DELETE_POST_SUCCESS': {
+            const filteredPosts = state.posts.filter((post) => post.id !== action.payload)
+            return {
+                ...state, 
+                posts: filteredPosts
+            }
+        }
+        case 'DELETE_POST_FAILURE': {
+            return {
+                ...state,
+                error: action.payload
+            }
+        }
         default:
             return state
     }

@@ -40,3 +40,20 @@ export const addPost = ({title, body, userId}) => {
         })
     }
 }
+
+export const deletePost = (id) => {
+    return (dispatch) => {
+        dispatch({type: 'DELETE_POST'})
+        axios(BASE+'/posts/'+id,{
+            method: 'DELETE'
+        })
+        .then((result) => {
+            console.log(result)
+            dispatch({type: 'DELETE_POST_SUCCESS', payload: id})
+        })
+        .catch((error) => {
+            console.log(error.message);
+            dispatch({ type: 'DELETE_POST_FAILURE', payload: error})
+        })
+    }
+}

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import Backdrop from './Backdrop';
 import Modal from './Modal';
 
 import { useDispatch } from 'react-redux'
-import { addPost } from './actions/postsActions';
+import { addPost, deletePost } from './actions/postsActions';
 
-const PostsList = ({posts, url, userId}) => {
+const PostsList = ({posts, url, userId, history}) => {
     const [ newPost, setNewPost ] = useState({});
     const [ isOpen, setIsOpen ] = useState(false);
     const dispatch = useDispatch();
@@ -21,14 +21,19 @@ const PostsList = ({posts, url, userId}) => {
         dispatch(addPost({...newPost, userId}))
         setIsOpen(false)
     }
-    
+
+    // const onDeletePost = (postId) => {
+    //     dispatch(deletePost(postId))
+    //     history.goBack();
+    // }
 
     return (
         <div>
-        
+            {/* <button onClick={() => history.goBack()}>back</button> */}
             <ul>{posts.map(post => (
                 <li key={post.id}>{post.title} {'-->'} 
                     <Link to={`${url}/${post.id}`}>Details</Link>
+                    {/* <button onClick={() => onDeletePost(post.id)}>delete</button> */}
                 </li>
                 ))}
             </ul>

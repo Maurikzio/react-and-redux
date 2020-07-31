@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PostComments = ({comments}) => {
-    console.log(comments);
+    // console.log(comments);
     if(comments.length === 0){
         return <p>No comments yet...</p>
     }else{

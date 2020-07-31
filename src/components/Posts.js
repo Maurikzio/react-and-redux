@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, useRouteMatch, useParams, Switch } from 'react-router-dom';
-import { fetchPosts } from './actions/postsActions';
+import { fetchPosts, deletePost } from './actions/postsActions';
 
 import Post from './Post';
 import PostsList from './PostsList';
 
-const Posts = () => {
+const Posts = ({history}) => {
     // const { path, url} = useRouteMatch();
     const {posts, fetching, error} = useSelector(state => state.posts);
     const dispatch = useDispatch();
@@ -17,7 +17,12 @@ const Posts = () => {
         dispatch(fetchPosts(id))
     }, [])
 
+    const handleDeletePost = (postId) => {
+        dispatch(deletePost(postId))
+        // history.goBack()
+    }
 
+    // console.log(history);
 
     let content;
 
@@ -26,13 +31,7 @@ const Posts = () => {
     }else if(fetching){
         content = <p>Loading posts...</p>
     }else{
-        // content =   <ul>{posts.map(post => (
-        //                 <li key={post.id}>{post.title} {'-->'} 
-        //                     <Link to={`${url}/${post.id}`}>Details</Link>
-        //                 </li>
-        //                 ))}
-        //             </ul>
-        content = <PostsList posts={posts} url={url} userId={id}/>
+        content = <PostsList posts={posts} url={url} userId={id} history={history}/>
     }
     
 
@@ -40,7 +39,9 @@ const Posts = () => {
         <div>
             <Switch>
                 <Route exact path={path} component={() => <>{content}</>}/>
-                <Route path={`${path}/:id`} component={Post}/>
+                <Route path={`${path}/:id`}>
+                    <Post handleDeletePost={handleDeletePost} history={history}/>
+                </Route>
             </Switch>
             {/* <p>{JSON.stringify(newPost, null, 2)}</p> */}
         </div>
