@@ -16,3 +16,27 @@ export const fetchPosts = (userId) => {
         })
     }
 }
+
+export const addPost = ({title, body, userId}) => {
+    return (dispatch) => {
+        dispatch({type: 'ADD_POST'});
+
+        axios(BASE+'/posts', {
+            method: 'POST',
+            data: JSON.stringify({
+                title,
+                body, 
+                userId
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+              }
+        })
+        .then((response) => {
+            dispatch({type: 'ADD_POST_SUCCESS', payload: response.data})
+        })
+        .catch((error) => {
+            dispatch({ type: 'ADD_POST_FAILURE', payload: error})
+        })
+    }
+}

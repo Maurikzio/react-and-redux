@@ -28,7 +28,30 @@ export default function reducer( state=initialState, action){
                 error: action.payload
             }
         }
+        case 'ADD_POST': {
+            console.log('adding poooooooost...');
+            break;
+        }
+        case 'ADD_POST_SUCCESS': {
+            console.log('success!!');
+            console.log(state.posts);
+            return {
+                ...state,
+                posts: [
+                    ...state.posts,
+                    action.payload
+                ]
+            }
+        }
+        case 'ADD_POST_FAILURE': {
+            console.log('something went wrong...');
+            return {
+                ...state, 
+                error: action.payload
+            }
+        }
         default:
             return state
     }
+    return state;
 }

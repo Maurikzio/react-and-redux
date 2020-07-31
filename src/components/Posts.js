@@ -32,7 +32,7 @@ const Posts = () => {
         //                 </li>
         //                 ))}
         //             </ul>
-        content = <PostsList posts={posts} url={url}/>
+        content = <PostsList posts={posts} url={url} userId={id}/>
     }
     
 

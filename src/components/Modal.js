@@ -2,10 +2,11 @@ import React from 'react';
 import './modal-styles.css'
 
 const Modal = ({opened, handleSubmitNewPost, posts, handleNewPostChange, newPost}) => {
+
     return (
         <div className={'modal'+(opened ? 'open': '')}>
             <form autoComplete='off' onSubmit={handleSubmitNewPost}>
-                    <input
+                    {/* <input
                         type='number'
                         name='userId'
                         placeholder='userId'
@@ -13,7 +14,7 @@ const Modal = ({opened, handleSubmitNewPost, posts, handleNewPostChange, newPost
                         max={posts.length}
                         value={newPost.userId || ''}
                         onChange={handleNewPostChange}
-                    />
+                    /> */}
                     <input
                         type='text'
                         name='title'

@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import Backdrop from './Backdrop';
 import Modal from './Modal';
 
-const PostsList = ({posts, url}) => {
+import { useDispatch } from 'react-redux'
+import { addPost } from './actions/postsActions';
+
+const PostsList = ({posts, url, userId}) => {
     const [ newPost, setNewPost ] = useState({});
     const [ isOpen, setIsOpen ] = useState(false);
+    const dispatch = useDispatch();
 
     const handleNewPostChange = (e) => {
         const { target: { name, value } } = e;
@@ -14,9 +18,11 @@ const PostsList = ({posts, url}) => {
 
     const handleSubmitNewPost = (e) => {
         e.preventDefault();
-        console.log(newPost);
+        dispatch(addPost({...newPost, userId}))
         setIsOpen(false)
     }
+    
+
     return (
         <div>
         
