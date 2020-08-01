@@ -24,9 +24,9 @@ export const addPost = ({title, body, userId}) => {
         axios(BASE+'/posts', {
             method: 'POST',
             data: JSON.stringify({
+                userId,
                 title,
-                body, 
-                userId
+                body 
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -54,6 +54,36 @@ export const deletePost = (id) => {
         .catch((error) => {
             console.log(error.message);
             dispatch({ type: 'DELETE_POST_FAILURE', payload: error})
+        })
+    }
+}
+
+export const editPost = (post) => {
+    // const data = {
+    //     userId: post.userId,
+    //     id: post.id,
+    //     title: post.title,
+    //     body: post.body
+    // }
+    return (dispatch) => {
+        dispatch({ type: 'EDIT_POST'})
+
+        axios(BASE+'/posts/'+post.id,{
+            method: 'PUT',
+            data: JSON.stringify(post),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then((response) => {
+            console.log('Success!')
+            console.log(response.data);
+            dispatch({ type: 'EDIT_POST_SUCCESS', payload: response.data})
+        })
+        .catch((error) => {
+            console.log('Fail!')
+            console.log(error.message);
+            dispatch({ type: 'EDIT_POST_FAILURE', payload: error.message})
         })
     }
 }

@@ -63,6 +63,18 @@ export default function reducer( state=initialState, action){
                 error: action.payload
             }
         }
+        case 'EDIT_POST_SUCCESS':{
+            return {
+                ...state,
+                posts: state.posts.map(post => {
+                    if(post.id === action.payload.id){
+                        return {...post,title: action.payload.title, body: action.payload.body}
+                    }else{
+                        return post
+                    }
+                })
+            }
+        }
         default:
             return state
     }
