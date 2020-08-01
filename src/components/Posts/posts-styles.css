@@ -1,13 +1,11 @@
 .posts{
-    /* height: inherit; */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: orange; */
+    padding-top: 30px;
 }
 .posts__content{
     height: 100vh;
-    /* background-color: orange; */
     display: flex;
     justify-content: center;
     align-items: center;

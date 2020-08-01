@@ -1,6 +1,6 @@
 .postList{
-    /* background: orange; */
-    height: 100vh;
+    max-width: 70%;
+    margin: 30px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,10 +8,7 @@
 }
 
 .postsList__table{
-    /* background-color: orange; */
-    max-width: 70%;
     border-collapse: collapse;
-    /* margin: auto; */
 }
 .postsList__table, th, td{
     border: 1px solid lightgray;
@@ -35,6 +32,30 @@
 
 .postList__backBtn{
     align-self: flex-start;
-    margin-left: 10%;
     margin-bottom: 10px;
+    background-color: #19181A;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.postList__backBtn:hover{
+    cursor: pointer;
+}
+
+.postList__addBtn{
+    margin-top: 10px;
+    border: 1px solid lightgray;
+    background-color: #3B945E;
+    padding: 10px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 800;
+}
+.postList__addBtn:hover{
+    cursor: pointer;
+}
+.postList__addBtn:focus{
+    outline: none;
 }

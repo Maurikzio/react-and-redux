@@ -1,9 +1,21 @@
 .post{
-    /* background-color: orange; */
+    padding-top: 30px;
+    max-width: 70%;
 }
-
+.post__backBtn{
+    align-self: flex-start;
+    margin-bottom: 10px;
+    background-color: #19181A;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.post__backBtn:hover{
+    cursor: pointer;
+}
 .post__controls{
-    /* background-color: orchid; */
     text-align: center;
 }
 .post__btn{
@@ -28,11 +40,17 @@
 .post__btn.editBtn{
     /* background-color: #F8E9A1; */
     background-color: #FCCD04;
-
+}
+.post__message{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
 }
 
 .comments {
     /* background-color: orange; */
     margin: 0 auto;
-    max-width: 80%;
+    /* max-width: 80%; */
 }

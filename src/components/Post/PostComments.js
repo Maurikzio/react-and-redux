@@ -3,11 +3,9 @@ import React from 'react';
 import './postComments-styles.css';
 
 const PostComments = ({comments}) => {
-    // console.log(comments);
-    if(comments.length === 0){
-        return <p>No comments yet...</p>
-    }else{
         return(
+            <div>
+            <h3>Comments:</h3>
             <ul className='postComments'>
                 {
                     comments.map((comment) => (
@@ -21,8 +19,9 @@ const PostComments = ({comments}) => {
                     ))
                 }
             </ul>
+            </div>
         )
-    }
+    // }
 }
 
 export default PostComments

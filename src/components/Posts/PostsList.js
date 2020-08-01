@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import Backdrop from './Backdrop';
-import Modal from './Modal';
+import Backdrop from '../Modal/Backdrop';
+import Modal from '../Modal/Modal';
 
 import { useDispatch } from 'react-redux'
-import { addPost } from './actions/postsActions';
+import { addPost } from '../actions/postsActions';
 
 import './postsList-styles.css';
 
@@ -26,7 +26,7 @@ const PostsList = ({posts, url, userId, history}) => {
 
     return (
         <div className='postList'>
-            <button  className='postList__backBtn' onClick={() => history.goBack()}>to Users...</button>
+            <button  className='postList__backBtn' onClick={() => history.goBack()}> &#60; back to Users</button>
             <table className='postsList__table'>
                 <thead>
                     <tr>
@@ -55,7 +55,7 @@ const PostsList = ({posts, url, userId, history}) => {
                 
             <button onClick={() => setIsOpen(true)} className='postList__addBtn'>Add new</button>
 
-            <p>{JSON.stringify(newPost, null, 2)}</p>
+            {/* <p>{JSON.stringify(newPost, null, 2)}</p> */}
             
             <Backdrop close={setIsOpen} opened={isOpen}/>
             <Modal 

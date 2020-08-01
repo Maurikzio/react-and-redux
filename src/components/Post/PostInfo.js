@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { editPost } from './actions/postsActions';
+import { editPost } from '../actions/postsActions';
 import { useDispatch } from 'react-redux';
 
 import './postInfo-styles.css';
 
-
 const PostInfo = ({ post, onEdit, setOnEdit}) => {
-    console.log(post);
+    // console.log(post);
     const [ postState, setPostState ] =  useState({});
     const dispacth = useDispatch();
 
@@ -26,12 +25,10 @@ const PostInfo = ({ post, onEdit, setOnEdit}) => {
         dispacth(editPost(postState))
         setOnEdit(false);
     }
-    if(!post){
-        return <p>loading..</p>
-    }else {
 
     return(
         <div className='postInfo'>
+            <h3>Post information</h3>
             <p><strong>user id:</strong> {postState.userId}</p>
             <p><strong>post id:</strong> {postState.id}</p>
             <div className='postInfo__controls'>
@@ -68,7 +65,7 @@ const PostInfo = ({ post, onEdit, setOnEdit}) => {
             </div>
         </div>
     )
-                    }
+    
 }
 
 export default PostInfo;

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, useRouteMatch, useParams, Switch } from 'react-router-dom';
-import { fetchPosts } from './actions/postsActions';
+import { fetchPosts } from '../actions/postsActions';
 
-import Post from './Post';
+import Post from '../Post/Post';
 import PostsList from './PostsList';
 
 import './posts-styles.css'
@@ -37,7 +37,6 @@ const Posts = ({history}) => {
                     <Post history={history}/>
                 </Route>
             </Switch>
-            {/* <p>{JSON.stringify(newPost, null, 2)}</p> */}
         </div>
     )
 }

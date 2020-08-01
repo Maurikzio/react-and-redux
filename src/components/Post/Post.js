@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchComments } from './actions/commentsActions';
-import { deletePost } from './actions/postsActions'
+import { fetchComments } from '../actions/commentsActions';
+import { deletePost } from '../actions/postsActions'
 import PostInfo from './PostInfo';
 import PostComments from './PostComments';
 
@@ -23,31 +23,21 @@ const Post = ({ history}) => {
     const handleDeletePost = () => {
         dispatch(deletePost(post.id))
         history.goBack()
+    }  
+
+    if(!post || fetching){
+        return <div className='post__message'><p>Loading post info..</p></div>
     }
-
-    let postComments; 
-
-    if(error){
-        postComments = <p>Oops {error}</p>
-    }else if(fetching){
-        postComments = <p>Loading comments...</p>
-    }else{
-        postComments = <PostComments comments={comments} />
-    }
-
-    // console.log(post);    
-
     return (
         <div className='post'>
-            <button onClick={() => history.goBack()}>to Posts..</button>
-            {post ? <PostInfo post={post} onEdit={onEdit} setOnEdit={setOnEdit}/> : <p>Loading post info...</p>}
+            <button className='post__backBtn' onClick={() => history.goBack()}>&#60; back to Posts</button>
+            <PostInfo post={post} onEdit={onEdit} setOnEdit={setOnEdit}/> 
             <div className='post__controls'>
                 <button className='post__btn deleteBtn' onClick={handleDeletePost}>Delete</button>
                 <button className='post__btn editBtn' onClick={() => setOnEdit(!onEdit)}>{onEdit ? 'Cancel' : 'Edit' }</button>
             </div>
             <div className='comments'>
-                <h3>Comments:</h3>
-                {postComments}
+                <PostComments comments={comments}/>
             </div>
         </div>
     )
