@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { editPost } from './actions/postsActions';
 import { useDispatch } from 'react-redux';
 
+import './postInfo-styles.css';
 
-const PostInfo = ({ post: { userId, id, title, body }, onEdit, setOnEdit}) => {
 
-    const [ postState, setPostState ] =  useState({ userId, id, title, body });
+const PostInfo = ({ post, onEdit, setOnEdit}) => {
+    console.log(post);
+    const [ postState, setPostState ] =  useState({});
     const dispacth = useDispatch();
+
+    useEffect(() => {
+        setPostState({...post})
+    }, [])
 
     const handleInputChange = (e) => {
         const { target: { value, name }} = e;
@@ -20,38 +26,49 @@ const PostInfo = ({ post: { userId, id, title, body }, onEdit, setOnEdit}) => {
         dispacth(editPost(postState))
         setOnEdit(false);
     }
+    if(!post){
+        return <p>loading..</p>
+    }else {
 
     return(
-        <div>
-            <p>user id: {userId}</p>
-            <p>post id: {id}</p>
-            <div style={{display:'flex', flexDirection:'column'}}>
-                {onEdit ? ( 
-                    <label>
-                        title:
-                        <input
-                            type='text'
-                            name='title'
-                            value={postState.title}
-                            onChange={handleInputChange}
-                        />
-                    </label>
-                        ) : ( <p>title: {title}</p> )}
-                {onEdit ? ( 
-                    <label>
-                        body:
-                        <input
-                            type='text'
-                            name='body'
-                            value={postState.body}
-                            onChange={handleInputChange}
-                        />
-                    </label>
-                        ) : ( <p>body: {body}</p> )}
+        <div className='postInfo'>
+            <p><strong>user id:</strong> {postState.userId}</p>
+            <p><strong>post id:</strong> {postState.id}</p>
+            <div className='postInfo__controls'>
+                <div className='postinfo__editors'>
+                    {onEdit ? ( 
+                        <div className='postInfo__field'>
+                            <label>
+                                <strong>title:</strong>
+                            </label>
+                            <input
+                                type='text'
+                                name='title'
+                                value={postState.title}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                        
+                            ) : ( <p><strong>title:</strong> {postState.title}</p> )}
+                    {onEdit ? ( 
+                        <div className='postInfo__field'>
+                        <label>
+                            <strong>body:</strong>
+                        </label>
+                            <input
+                                type='text'
+                                name='body'
+                                value={postState.body}
+                                onChange={handleInputChange}
+                            />
+                        </div>
+                            ) : ( <p><strong>body:</strong> {postState.body}</p> )}
+                </div>
+                <button className={`postInfo__updateBtn `+ (onEdit ? 'open' : '')}  onClick={handleEditPost}>Update</button>
             </div>
-            {onEdit && <button onClick={handleEditPost}>Update</button>}
         </div>
     )
+                    }
 }
 
 export default PostInfo;

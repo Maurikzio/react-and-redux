@@ -1,0 +1,23 @@
+.postComments{
+    /* background: wheat; */
+    display: flex;
+    list-style: none;
+    padding: 5px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.postComments li{
+    width: 400px;
+    /* background-color: tomato; */
+    font-size: 13px;
+    margin:3px;
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.postComments li p{
+    margin: 0;
+    padding: 3px 0;
+}

@@ -1,0 +1,40 @@
+.postList{
+    /* background: orange; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.postsList__table{
+    /* background-color: orange; */
+    max-width: 70%;
+    border-collapse: collapse;
+    /* margin: auto; */
+}
+.postsList__table, th, td{
+    border: 1px solid lightgray;
+    padding: 10px 20px;
+}
+
+.postsList__table a{
+    padding: 5px;
+    background-color: #DC3545;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+    border-radius: 6px;
+}
+
+.postsList__message{
+    font-size: 50px;
+}
+
+.postList__backBtn{
+    align-self: flex-start;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}

@@ -6,6 +6,8 @@ import { deletePost } from './actions/postsActions'
 import PostInfo from './PostInfo';
 import PostComments from './PostComments';
 
+import './post-styles.css';
+
 const Post = ({ history}) => {
     const { id } = useParams();
     const post = useSelector(state => state.posts.posts.find(post => post.id === Number(id)));
@@ -33,15 +35,20 @@ const Post = ({ history}) => {
         postComments = <PostComments comments={comments} />
     }
 
-    // console.log(post);
+    // console.log(post);    
 
     return (
-        <div>
+        <div className='post'>
             <button onClick={() => history.goBack()}>to Posts..</button>
-            { post && <PostInfo post={post} onEdit={onEdit} setOnEdit={setOnEdit} /> }
-            <button onClick={handleDeletePost}>Delete</button>
-            <button onClick={() => setOnEdit(!onEdit)}>{onEdit ? 'Close' : 'Edit' }</button>
-            {postComments}
+            {post ? <PostInfo post={post} onEdit={onEdit} setOnEdit={setOnEdit}/> : <p>Loading post info...</p>}
+            <div className='post__controls'>
+                <button className='post__btn deleteBtn' onClick={handleDeletePost}>Delete</button>
+                <button className='post__btn editBtn' onClick={() => setOnEdit(!onEdit)}>{onEdit ? 'Cancel' : 'Edit' }</button>
+            </div>
+            <div className='comments'>
+                <h3>Comments:</h3>
+                {postComments}
+            </div>
         </div>
     )
 }

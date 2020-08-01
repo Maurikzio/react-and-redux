@@ -46,8 +46,6 @@ const Users = () => {
                 </tbody>
             </table>
     }
-    
-    {/* <li key={user.id}>{user.name} {'-->>'} <Link to={`/${user.id}`}>posts</Link></li> */}
 
     return( 
         <div className='users'>{content}</div>

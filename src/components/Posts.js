@@ -6,6 +6,8 @@ import { fetchPosts } from './actions/postsActions';
 import Post from './Post';
 import PostsList from './PostsList';
 
+import './posts-styles.css'
+
 const Posts = ({history}) => {
     const {posts, fetching, error} = useSelector(state => state.posts);
     const dispatch = useDispatch();
@@ -20,17 +22,17 @@ const Posts = ({history}) => {
     let content;
 
     if(error){
-        content = <p>Oops {error}</p>
+        content = <div><p>Oops {error}</p></div>
     }else if(fetching){
-        content = <p>Loading posts...</p>
+        content = <div className='posts__content'><p>Loading posts...</p></div>
     }else{
         content = <PostsList posts={posts} url={url} userId={id} history={history}/>
     }
     
     return (
-        <div>
+        <div className='posts'>
             <Switch>
-                <Route exact path={path} component={() => <>{content}</>}/>
+                <Route exact path={path} component={() => <div>{content}</div>}/>
                 <Route path={`${path}/:id`}>
                     <Post history={history}/>
                 </Route>

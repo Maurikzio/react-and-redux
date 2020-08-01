@@ -1,0 +1,38 @@
+.post{
+    /* background-color: orange; */
+}
+
+.post__controls{
+    /* background-color: orchid; */
+    text-align: center;
+}
+.post__btn{
+    border: 1px solid lightgray;
+    margin: 0px 10px;
+    padding: 10px;
+    font-size: 13px;
+    color: white;
+    font-weight: 800;
+    width: 80px;
+    border-radius: 5px;
+}
+.post__btn:focus{
+    outline: none !important;
+}
+.post__btn:hover{
+    cursor: pointer;
+}
+.post__btn.deleteBtn{
+    background-color: #F76C6C;
+}
+.post__btn.editBtn{
+    /* background-color: #F8E9A1; */
+    background-color: #FCCD04;
+
+}
+
+.comments {
+    /* background-color: orange; */
+    margin: 0 auto;
+    max-width: 80%;
+}
