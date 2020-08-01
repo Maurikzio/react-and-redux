@@ -2,9 +2,10 @@
     border: 1px solid lightgray;
     border-radius: 5px;
     flex-direction: column;
-    /* max-width: 80%; */
+    width: 100%;
     margin: 5px auto;
     padding: 10px 10px 30px;
+    /* background-color: orange; */
 }
 .postInfo h3{
     text-align: center;

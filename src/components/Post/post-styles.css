@@ -1,6 +1,6 @@
 .post{
     padding-top: 30px;
-    max-width: 70%;
+    width: 70%;
 }
 .post__backBtn{
     align-self: flex-start;
