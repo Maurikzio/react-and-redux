@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, useRouteMatch, useParams, Switch } from 'react-router-dom';
-import { fetchPosts, deletePost, editPost } from './actions/postsActions';
+import { fetchPosts } from './actions/postsActions';
 
 import Post from './Post';
 import PostsList from './PostsList';
@@ -16,14 +16,6 @@ const Posts = ({history}) => {
         dispatch(fetchPosts(id))
     }, [id])
 
-    const handleDeletePost = (postId) => {
-        dispatch(deletePost(postId))
-        // history.goBack()
-    }
-
-    const handleEditPost = (post) => {
-        dispatch(editPost(post))
-    }
 
     let content;
 
@@ -40,7 +32,7 @@ const Posts = ({history}) => {
             <Switch>
                 <Route exact path={path} component={() => <>{content}</>}/>
                 <Route path={`${path}/:id`}>
-                    <Post handleDeletePost={handleDeletePost} handleEditPost={handleEditPost} history={history}/>
+                    <Post history={history}/>
                 </Route>
             </Switch>
             {/* <p>{JSON.stringify(newPost, null, 2)}</p> */}

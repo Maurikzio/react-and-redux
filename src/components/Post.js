@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchComments } from './actions/commentsActions';
+import { deletePost } from './actions/postsActions'
 import PostInfo from './PostInfo';
 import PostComments from './PostComments';
 
-const Post = ({handleDeletePost, handleEditPost, history}) => {
+const Post = ({ history}) => {
     const { id } = useParams();
     const post = useSelector(state => state.posts.posts.find(post => post.id === Number(id)));
     const { comments, fetching, error} = useSelector(state => state.comments);
@@ -17,6 +18,10 @@ const Post = ({handleDeletePost, handleEditPost, history}) => {
         dispatch(fetchComments(id));
     }, [id])
 
+    const handleDeletePost = () => {
+        dispatch(deletePost(post.id))
+        history.goBack()
+    }
 
     let postComments; 
 
@@ -32,9 +37,10 @@ const Post = ({handleDeletePost, handleEditPost, history}) => {
 
     return (
         <div>
-            { post && <PostInfo post={post} onEdit={onEdit} handleEditPost={handleEditPost} setOnEdit={setOnEdit} /> }
-            <button onClick={() => {handleDeletePost(post.id); history.goBack()}}>Delete</button>
-            <button onClick={() => setOnEdit(true)}>Edit</button>
+            <button onClick={() => history.goBack()}>to Posts..</button>
+            { post && <PostInfo post={post} onEdit={onEdit} setOnEdit={setOnEdit} /> }
+            <button onClick={handleDeletePost}>Delete</button>
+            <button onClick={() => setOnEdit(!onEdit)}>{onEdit ? 'Close' : 'Edit' }</button>
             {postComments}
         </div>
     )

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { editPost } from './actions/postsActions';
+import { useDispatch } from 'react-redux';
 
-const PostInfo = ({ post: { userId, id, title, body }, onEdit, handleEditPost, setOnEdit}) => {
+
+const PostInfo = ({ post: { userId, id, title, body }, onEdit, setOnEdit}) => {
 
     const [ postState, setPostState ] =  useState({ userId, id, title, body });
+    const dispacth = useDispatch();
 
     const handleInputChange = (e) => {
         const { target: { value, name }} = e;
@@ -11,10 +15,9 @@ const PostInfo = ({ post: { userId, id, title, body }, onEdit, handleEditPost, s
             [name]: value
         })
     }
-
-    // console.log(postState);
-    const handleEdit = () => {
-        handleEditPost(postState)
+    
+    const handleEditPost = () => {
+        dispacth(editPost(postState))
         setOnEdit(false);
     }
 
@@ -46,7 +49,7 @@ const PostInfo = ({ post: { userId, id, title, body }, onEdit, handleEditPost, s
                     </label>
                         ) : ( <p>body: {body}</p> )}
             </div>
-            {onEdit && <button onClick={handleEdit}>Update</button>}
+            {onEdit && <button onClick={handleEditPost}>Update</button>}
         </div>
     )
 }

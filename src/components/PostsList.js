@@ -4,7 +4,7 @@ import Backdrop from './Backdrop';
 import Modal from './Modal';
 
 import { useDispatch } from 'react-redux'
-import { addPost, deletePost } from './actions/postsActions';
+import { addPost } from './actions/postsActions';
 
 const PostsList = ({posts, url, userId, history}) => {
     const [ newPost, setNewPost ] = useState({});
@@ -22,14 +22,9 @@ const PostsList = ({posts, url, userId, history}) => {
         setIsOpen(false)
     }
 
-    // const onDeletePost = (postId) => {
-    //     dispatch(deletePost(postId))
-    //     history.goBack();
-    // }
-
     return (
         <div>
-            {/* <button onClick={() => history.goBack()}>back</button> */}
+            <button onClick={() => history.goBack()}>to Users...</button>
             <ul>{posts.map(post => (
                 <li key={post.id}>{post.title} {'-->'} 
                     <Link to={`${url}/${post.id}`}>Details</Link>
