@@ -1,0 +1,31 @@
+.users {
+    /* background-color: rgb(214, 210, 210); */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.users__table{
+    /* background-color: orange; */
+    border-collapse: collapse;
+}
+.users__table, th, td{
+    border: 1px solid lightgray;
+    padding: 10px 20px;
+}
+
+.users__table a{
+    padding: 5px;
+    background-color: #DC3545;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+    border-radius: 6px;
+}
+
+.users__message{
+    font-size: 30px;
+}
